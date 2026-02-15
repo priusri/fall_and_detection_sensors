@@ -28,6 +28,8 @@ def register():
         db.session.commit()
         flash('Your account has been created! You can now log in', 'success')
         return redirect(url_for('main.login'))
+    else:
+        print("Registration Failed. Form Errors:", form.errors)
     return render_template('register.html', title='Register', form=form)
 
 @main_bp.route("/login", methods=['GET', 'POST'])
@@ -74,7 +76,12 @@ def fall_status():
 def settings():
     form = ContactForm()
     if form.validate_on_submit():
-        contact = Contact(name=form.name.data, phone_number=form.phone_number.data, author=current_user)
+        phone = form.phone_number.data.strip()
+        # Auto-format: If 10 digits, prepend +91
+        if len(phone) == 10 and phone.isdigit():
+            phone = "+91" + phone
+            
+        contact = Contact(name=form.name.data, phone_number=phone, owner=current_user)
         db.session.add(contact)
         db.session.commit()
         flash('Emergency contact added!', 'success')
@@ -87,7 +94,7 @@ def settings():
 @login_required
 def delete_contact(contact_id):
     contact = Contact.query.get_or_404(contact_id)
-    if contact.author != current_user:
+    if contact.owner != current_user:
         abort(403)
     db.session.delete(contact)
     db.session.commit()
