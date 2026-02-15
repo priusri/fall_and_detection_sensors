@@ -1,0 +1,132 @@
+:root {
+    --primary: #2563eb;
+    --danger: #dc2626;
+    --success: #16a34a;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar {
+    background: var(--card-bg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify_content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: var(--text-muted);
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+.content {
+    padding-top: 40px;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.alert-success { background: #dcfce7; color: var(--success); }
+.alert-danger { background: #fee2e2; color: var(--danger); }
+.alert-info { background: #e0f2fe; color: var(--primary); }
+
+/* Dashboard Specific */
+.status-card {
+    text-align: center;
+}
+
+.status-indicator {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.status-safe { color: var(--success); }
+.status-danger { color: var(--danger); }
+.status-unknown { color: var(--text-muted); }
+
+.coords-box {
+    background: #f1f5f9;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+    font-family: monospace;
+}
